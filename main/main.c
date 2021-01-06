@@ -11,15 +11,15 @@
 #include "nvs_flash.h"
 
 void app_main(void) {
-	ESP_LOGI("MAIN", "Hello world!");
 
-    ESP_LOGI("MAIN", "Minimum free heap size: %d bytes", esp_get_minimum_free_heap_size());
+    ESP_LOGI("ESP", "Free heap: %d bytes", esp_get_free_heap_size());
+    ESP_LOGI("ESP", "IDF version: %s", esp_get_idf_version());
 
-    for (int i = 60; i >= 0; i--) {
+    for (int i = 10; i >= 0; i--) {
         ESP_LOGI("MAIN", "Restarting in %d seconds...", i);
         vTaskDelay(1000 / portTICK_PERIOD_MS);
     }
-    ESP_LOGI("MAIN", "Restarting now.");
+    ESP_LOGI("ESP", "Restarting now.");
     fflush(stdout);
     esp_restart();
 }
